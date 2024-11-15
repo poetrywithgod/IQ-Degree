@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>IQ Degree</title>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function App() {
+            const [isSlideRight, setIsSlideRight] = React.useState(false);
+
+            const handleSlideRight = () => {
+                setIsSlideRight(true);
+            };
+
+            const handleSlideLeft = () => {
+                setIsSlideRight(false);
+            };
+
+            const handleSignUp = () => {
+                window.location.href = "Pages/OTP.html"; // Navigate to OTP form page
+            };
+
+            const handleSignIn = () => {
+                window.location.href = "pages/MainQuiz.html"; // Navigate to main quiz page
+            };
+
+            return (
+                <div className="flex items-center justify-center min-h-screen bg-gray-100 overflow-hidden" style={{ fontFamily: "'Itim', sans-serif" }}>
+                    <div className="bg-white shadow-lg rounded-lg flex" style={{ width: '75vw', height: '90vh', maxWidth: '4xl', overflow: 'hidden' }}>
+                        <div className={`transition-width ${isSlideRight ? 'w-2/3' : 'w-1/3'} bg-red-600 text-white p-10 rounded-l-lg flex flex-col justify-center items-center h-full`} style={{ backgroundImage: 'url(./Images/bground.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                            {isSlideRight ? (
+                                <>
+                                    <h1 className="text-3xl font-bold mb-2">Slide Right</h1>
+                                    <div className="w-full mb-4">
+                                        <input type="email" placeholder="Email" className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4 text-black" />
+                                        <input type="password" placeholder="Password" className="w-full px-4 py-2 border border-gray-300 rounded-full text-black" />
+                                    </div>
+                                    <button onClick={handleSignIn} className="bg-white text-teal-500 px-6 py-2 rounded-full font-semibold">SIGN IN</button>
+                                </>
+                            ) : (
+                                <>
+                                    <img src="./Images/logo.png" alt="Company Logo" className="mb-4 w-10 h-7" />
+                                    <h1 className="text-3xl font-bold mb-2">Welcome Back!</h1>
+                                    <p className="mb-6 text-center">To keep connected with us, please log in with your personal info</p>
+                                    <button onClick={handleSlideRight} className="bg-white text-teal-500 px-6 py-2 rounded-full font-semibold">SLIDE RIGHT</button>
+                                </>
+                            )}
+                        </div>
+                        <div className={`transition-width ${isSlideRight ? 'w-1/3' : 'w-2/3'} p-10 flex flex-col justify-center items-center h-full`}>
+                            {isSlideRight ? (
+                                <>
+                                    <img src="./Images/logo.png" alt="Company Logo" className="mb-4 w-14 h-11" />
+                                    <h1 className="text-3xl font-bold mb-2">Welcome Back!</h1>
+                                    <p className="mb-6 text-center">To keep connected with us, please log in with your personal info</p>
+                                    <button onClick={handleSlideLeft} className="bg-white text-teal-500 px-6 py-2 rounded-full font-semibold">SLIDE LEFT</button>
+                                </>
+                            ) : (
+                                <>
+                                    <h1 className="text-3xl font-bold text-teal-500 mb-6">Create Account</h1>
+                                    <p className="text-gray-500 mb-6">Fill this form to complete your registration:</p>
+                                    <div className="w-full mb-4">
+                                        <input type="text" placeholder="Name" className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4" />
+                                        <input type="email" placeholder="Email" className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4" />
+                                        <input type="password" placeholder="Password" className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4" />
+                                        <input type="text" placeholder="Country" className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4" />
+                                        <select className="w-full px-4 py-2 border border-gray-300 rounded-full mb-4">
+                                            <option value="" disabled selected>Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                    <button onClick={handleSignUp} className="bg-teal-500 text-white px-6 py-2 rounded-full font-semibold">SIGN UP</button>
+                                </>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
