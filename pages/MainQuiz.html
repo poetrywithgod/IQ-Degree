@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IQ Degree</title>
+    <link href="https://unpkg.com/tailwindcss@^2.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body class="bg-orange-600 flex items-center justify-center min-h-screen">
+
+    <!-- Root element for React -->
+    <div id="root" class="w-full max-w-md"></div>
+
+    <script type="text/babel">
+        const questionsData = [
+            { question: "Who was the first president of the United States?", options: ["George Washington", "Thomas Jefferson", "Abraham Lincoln", "James Madison"], answer: "George Washington" },
+            { question: "In which year did the Titanic sink?", options: ["1912", "1905", "1923", "1898"], answer: "1912" },
+            { question: "Who wrote '1984'?", options: ["George Orwell", "Aldous Huxley", "J.K. Rowling", "Mark Twain"], answer: "George Orwell" },
+            { question: "What is the largest planet in our solar system?", options: ["Jupiter", "Saturn", "Earth", "Mars"], answer: "Jupiter" },
+            { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Pb", "Fe"], answer: "Au" },
+            { question: "Who painted the Mona Lisa?", options: ["Leonardo da Vinci", "Vincent van Gogh", "Pablo Picasso", "Claude Monet"], answer: "Leonardo da Vinci" },
+            { question: "What is the capital city of Japan?", options: ["Tokyo", "Seoul", "Beijing", "Bangkok"], answer: "Tokyo" },
+            { question: "In which book would you find the character Atticus Finch?", options: ["To Kill a Mockingbird", "Pride and Prejudice", "1984", "The Catcher in the Rye"], answer: "To Kill a Mockingbird" },
+            { question: "What is the square root of 64?", options: ["8", "6", "7", "10"], answer: "8" },
+            { question: "Which planet is known as the Red Planet?", options: ["Mars", "Venus", "Mercury", "Neptune"], answer: "Mars" },
+            { question: "What is the longest river in the world?", options: ["Amazon", "Nile", "Yangtze", "Mississippi"], answer: "Amazon" },
+            { question: "Who discovered penicillin?", options: ["Alexander Fleming", "Marie Curie", "Isaac Newton", "Louis Pasteur"], answer: "Alexander Fleming" },
+            { question: "What is the main ingredient in guacamole?", options: ["Avocado", "Tomato", "Onion", "Lemon"], answer: "Avocado" },
+            { question: "Who wrote 'The Odyssey'?", options: ["Homer", "Virgil", "Shakespeare", "Sophocles"], answer: "Homer" },
+            { question: "What is the largest organ in the human body?", options: ["Skin", "Liver", "Heart", "Lungs"], answer: "Skin" },
+            { question: "Who is known as the 'Father of Modern Physics'?", options: ["Albert Einstein", "Isaac Newton", "Nikola Tesla", "Galileo Galilei"], answer: "Albert Einstein" },
+            { question: "What is the boiling point of water in Celsius?", options: ["100°C", "90°C", "120°C", "80°C"], answer: "100°C" },
+            { question: "Which country is the largest producer of coffee?", options: ["Brazil", "Colombia", "Vietnam", "Ethiopia"], answer: "Brazil" },
+            { question: "Which is the smallest ocean in the world?", options: ["Arctic Ocean", "Indian Ocean", "Atlantic Ocean", "Pacific Ocean"], answer: "Arctic Ocean" },
+            { question: "Who was the first woman to fly solo across the Atlantic?", options: ["Amelia Earhart", "Valentina Tereshkova", "Bessie Coleman", "Gertrude Ederle"], answer: "Amelia Earhart" },
+            { question: "What is the tallest mountain in the world?", options: ["Mount Everest", "K2", "Kangchenjunga", "Mount Kilimanjaro"], answer: "Mount Everest" },
+            { question: "Who wrote 'Pride and Prejudice'?", options: ["Jane Austen", "Charlotte Brontë", "Emily Dickinson", "Virginia Woolf"], answer: "Jane Austen" },
+            { question: "What is the capital of Egypt?", options: ["Cairo", "Alexandria", "Luxor", "Giza"], answer: "Cairo" },
+            { question: "Which element has the atomic number 1?", options: ["Hydrogen", "Oxygen", "Nitrogen", "Helium"], answer: "Hydrogen" },
+            { question: "Who is the author of 'The Great Gatsby'?", options: ["F. Scott Fitzgerald", "Hemingway", "J.K. Rowling", "William Faulkner"], answer: "F. Scott Fitzgerald" },
+            { question: "Which is the hardest natural substance?", options: ["Diamond", "Gold", "Platinum", "Iron"], answer: "Diamond" },
+            { question: "What is the capital of Canada?", options: ["Ottawa", "Toronto", "Vancouver", "Montreal"], answer: "Ottawa" },
+            { question: "In which year did World War II end?", options: ["1945", "1939", "1918", "1950"], answer: "1945" },
+            { question: "Who wrote 'Moby-Dick'?", options: ["Herman Melville", "Mark Twain", "Hemingway", "Dickens"], answer: "Herman Melville" },
+            { question: "Which country is known as the Land of the Rising Sun?", options: ["Japan", "China", "South Korea", "Thailand"], answer: "Japan" },
+            { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "NaCl"], answer: "H2O" },
+            { question: "What is the largest desert in the world?", options: ["Sahara", "Arabian", "Gobi", "Kalahari"], answer: "Sahara" },
+            { question: "What is the smallest country in the world?", options: ["Vatican City", "Monaco", "Nauru", "San Marino"], answer: "Vatican City" },
+            { question: "Who was the first person to walk on the moon?", options: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"], answer: "Neil Armstrong" },
+            { question: "What is the largest ocean on Earth?", options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Southern Ocean"], answer: "Pacific Ocean" },
+            { question: "Who was the first emperor of China?", options: ["Qin Shi Huang", "Wu Zetian", "Tang Taizong", "Han Wudi"], answer: "Qin Shi Huang" },
+            { question: "What is the most common blood type?", options: ["O+", "A+", "B+", "AB+"], answer: "O+" },
+            { question: "What is the currency of the United Kingdom?", options: ["Pound Sterling", "Euro", "Dollar", "Yen"], answer: "Pound Sterling" },
+            { question: "Which famous scientist developed the theory of relativity?", options: ["Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla"], answer: "Albert Einstein" },
+            { question: "Who wrote 'The Catcher in the Rye'?", options: ["J.D. Salinger", "F. Scott Fitzgerald", "John Steinbeck", "Ernest Hemingway"], answer: "J.D. Salinger" },
+            { question: "Which planet is known for its rings?", options: ["Saturn", "Jupiter", "Neptune", "Uranus"], answer: "Saturn" },
+            { question: "What is the capital of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], answer: "Canberra" },
+            { question: "In which year did the Berlin Wall fall?", options: ["1989", "1985", "1990", "1975"], answer: "1989" },
+            { question: "Who invented the telephone?", options: ["Alexander Graham Bell", "Thomas Edison", "Nikola Tesla", "James Watt"], answer: "Alexander Graham Bell" },
+            { question: "What is the capital city of Spain?", options: ["Madrid", "Barcelona", "Seville", "Valencia"], answer: "Madrid" },
+            { question: "Which organ in the human body produces insulin?", options: ["Pancreas", "Liver", "Stomach", "Kidneys"], answer: "Pancreas" },
+            { question: "Who wrote 'War and Peace'?", options: ["Leo Tolstoy", "Fyodor Dostoevsky", "Victor Hugo", "Charles Dickens"], answer: "Leo Tolstoy" }
+        ];
+
+
+        function shuffle(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function QuizApp() {
+            const [questions, setQuestions] = React.useState(shuffle([...questionsData]));
+            const [currentQuestion, setCurrentQuestion] = React.useState(0);
+            const [userSelections, setUserSelections] = React.useState({});
+            const [score, setScore] = React.useState(0);
+            const [showScore, setShowScore] = React.useState(false);
+            const [timeElapsed, setTimeElapsed] = React.useState(0);
+
+            React.useEffect(() => {
+                let timer;
+                if (!showScore) {
+                    timer = setInterval(() => setTimeElapsed(prev => prev + 1), 1000);
+                } else {
+                    clearInterval(timer);
+                }
+                return () => clearInterval(timer);
+            }, [showScore]);
+
+            const handleOptionClick = (option) => {
+                setUserSelections(prev => ({ ...prev, [currentQuestion]: option }));
+                if (option === questions[currentQuestion].answer) {
+                    setScore(prevScore => prevScore + 1);
+                }
+            };
+
+            const goToNextQuestion = () => {
+                if (currentQuestion < questions.length - 1) {
+                    setCurrentQuestion(prev => prev + 1);
+                } else {
+                    setShowScore(true);
+                }
+            };
+
+            const goToPreviousQuestion = () => {
+                if (currentQuestion > 0) {
+                    setCurrentQuestion(prev => prev - 1);
+                }
+            };
+
+            const retakeQuiz = () => {
+                setQuestions(shuffle([...questionsData])); // Reshuffle questions
+                setCurrentQuestion(0); // Reset to first question
+                setUserSelections({}); // Clear user selections
+                setScore(0); // Reset score
+                setShowScore(false); // Hide score
+                setTimeElapsed(0); // Reset timer
+            };
+
+            const logOut = () => {
+                window.location.href = '/index.html'; // Redirect to the sign-up page
+            };
+
+            return (
+                <div className="bg-white p-6 rounded-lg shadow-lg text-center">
+                    <h1 className="text-2xl font-bold mb-4">IQ Degree</h1>
+                    {showScore ? (
+                        <div>
+                            <div className="text-lg font-semibold mb-4">
+                                You scored {score} out of {questions.length}!
+                            </div>
+                            <div className="text-md font-semibold mb-4">
+                                Time Taken: {Math.floor(timeElapsed / 60)}m {timeElapsed % 60}s
+                            </div>
+                            <div className="flex justify-center gap-4">
+                                <button
+                                    className="px-4 py-2 bg-green-500 text-white font-bold rounded-lg hover:bg-green-700"
+                                    onClick={retakeQuiz} // Trigger retakeQuiz to restart //
+                                >
+                                    Retake Quiz
+                                </button>
+                                <button
+                                    className="px-4 py-2 bg-red-500 text-white font-bold rounded-lg hover:bg-red-700"
+                                    onClick={logOut}
+                                >
+                                    Log Out
+                                </button>
+                            </div>
+                        </div>
+                    ) : (
+                        <div>
+                            <div className="mb-4">
+                                <span className="text-xl font-semibold">
+                                    {questions[currentQuestion].question}
+                                </span>
+                            </div>
+                            <div className="flex flex-col items-center gap-3 mb-4">
+                                {questions[currentQuestion].options.map((option, index) => (
+                                    <button
+                                        key={index}
+                                        className={`px-4 py-2 w-full text-white font-bold rounded-lg ${userSelections[currentQuestion] === option ? 'bg-blue-700' : 'bg-blue-500 hover:bg-blue-700'}`}
+                                        onClick={() => handleOptionClick(option)}
+                                    >
+                                        {option}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="flex justify-between">
+                                <button
+                                    className="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-700"
+                                    onClick={goToPreviousQuestion}
+                                    disabled={currentQuestion === 0}
+                                >
+                                    Previous
+                                </button>
+                                <button
+                                    className="px-4 py-2 bg-gray-500 text-white font-bold rounded-lg hover:bg-gray-700"
+                                    onClick={goToNextQuestion}
+                                >
+                                    {currentQuestion < questions.length - 1 ? "Next" : "Finish"}
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        ReactDOM.render(<QuizApp />, document.getElementById('root'));
+    </script>
+</body>
+
+</html>
